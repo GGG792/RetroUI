@@ -141,12 +141,12 @@ end;
 function RetroUI.new(config)
 	config = config or {};
 	local self = setmetatable({}, RetroUI);
-	self.Name = config.Name or "Script Hub";
+	self.Name = config.Name or "脚本中心";
 	self.Subtitle = config.Subtitle or "v1.0";
 	self.Tabs = {};
 	self.ActiveTab = nil;
 	self.Connections = {};
-	self.StatusText = "Ready";
+	self.StatusText = "就绪";
 
 	self:_build();
 	return self;
@@ -267,7 +267,7 @@ function RetroUI:_build()
 	menuBar.Parent = self.Frame;
 	addBevel(menuBar, "raised", 1);
 
-	local menuItems = {"File", "Edit", "View", "Help"};
+	local menuItems = {"文件", "编辑", "查看", "帮助"};
 	for i, item in ipairs(menuItems) do
 		local menuBtn = Instance.new("TextButton");
 		menuBtn.Size = UDim2.new(0, 36, 0, 18);
@@ -363,7 +363,7 @@ function RetroUI:_build()
 	sideTitleLabel.Size = UDim2.new(1, -4, 1, 0);
 	sideTitleLabel.Position = UDim2.new(0, 4, 0, 0);
 	sideTitleLabel.BackgroundTransparency = 1;
-	sideTitleLabel.Text = "Navigation";
+	sideTitleLabel.Text = "导航栏";
 	sideTitleLabel.Font = Enum.Font.SourceSansBold;
 	sideTitleLabel.TextSize = 10;
 	sideTitleLabel.TextColor3 = C.ContentText;
@@ -387,7 +387,7 @@ function RetroUI:_build()
 	welcome.Size = UDim2.new(1, -12, 0, 18);
 	welcome.Position = UDim2.new(0, 6, 0, 6);
 	welcome.BackgroundTransparency = 1;
-	welcome.Text = "Welcome to " .. self.Name;
+	welcome.Text = "欢迎使用 " .. self.Name;
 	welcome.Font = Enum.Font.SourceSansBold;
 	welcome.TextSize = 12;
 	welcome.TextColor3 = C.ContentText;
@@ -399,7 +399,7 @@ function RetroUI:_build()
 	sub.Size = UDim2.new(1, -12, 0, 14);
 	sub.Position = UDim2.new(0, 6, 0, 24);
 	sub.BackgroundTransparency = 1;
-	sub.Text = "Select a tab from the sidebar to begin."
+	sub.Text = "从侧边栏选择一个标签页开始。";
 	sub.Font = Enum.Font.SourceSans;
 	sub.TextSize = 10;
 	sub.TextColor3 = C.ContentTextDim;
@@ -605,7 +605,7 @@ function RetroUI:SelectTab(tab)
 	self.ActiveTab = tab;
 
 	-- 更新状态栏
-	self:SetStatus("Tab: " .. tab.Name);
+	self:SetStatus("标签页: " .. tab.Name);
 end;
 
 -- ========== 状态栏 ==========
@@ -884,7 +884,7 @@ function RetroUI:AddDropdown(tab, text, options, callback)
 	btn.Position = UDim2.new(0, 0, 0, 1);
 	btn.BackgroundColor3 = C.InputBg;
 	btn.BorderSizePixel = 0;
-	btn.Text = "  " .. text .. ": " .. (options[1] or "None") .. "  v";
+	btn.Text = "  " .. text .. ": " .. (options[1] or "无") .. "  v";
 	btn.Font = Enum.Font.SourceSans;
 	btn.TextSize = 11;
 	btn.TextColor3 = C.InputText;
